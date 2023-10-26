@@ -8,6 +8,7 @@ import { DialogComponent } from 'src/app/Posts/dialog/dialog.component';
 import { OnDestroy, OnInit} from "@angular/core";
 import { User } from "../user.model";
 import {Subscription} from "rxjs";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -25,8 +26,10 @@ export class UserLoginComponent implements OnInit, OnDestroy{
   enteredTitle = '';
   enteredContent = '';
   enteredRole = '';
+  cliente = 'CLIENT';
+  admin = 'ADMIN';
 
-  constructor(public usersService: UserService){}
+  constructor(public usersService: UserService, private router: Router){}
 
   ngOnInit(){
     this.usersService.getUsers();
@@ -34,9 +37,9 @@ export class UserLoginComponent implements OnInit, OnDestroy{
     .subscribe((users: User[]) =>{
       this.users = users;
 
-      this.users.forEach(element => {
+     /* this.users.forEach(element => {
         window.alert(element.user+element.id+element.password+element.role)
-      });
+      });*/
         
     });
     
@@ -48,7 +51,7 @@ ngOnDestroy(){
 
   
 
-  example(){
+  sign(){
 
     // Obtén una referencia al elemento de entrada de texto
 const userElement = document.getElementById("user") as HTMLInputElement;
@@ -59,13 +62,16 @@ const password = passwordElement.value;
 this.users.forEach(element => {
   if(user==element.user && password==element.password){
     window.alert('ACCESO CONCEDIDO' + element.user);
-  }
-
-});
-  
-
-
-  
+      if(element.role == this.admin){
+        this.router.navigate(['/admin'])
+      }else{
+        if(element.role == this.cliente){
+            window.alert('HOLA CLIENTE')
+        }
+      }
+    
+    }
+  });
   }
 
   

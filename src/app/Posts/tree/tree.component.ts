@@ -8,6 +8,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { ViewChild } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { PostCreateComponent } from '../Posts-create/post-create.component';
+import { UserCreateComponent } from 'src/app/Users/user-create/user-create.component';
 
 /**
  * Food data with nested structure.
@@ -24,7 +25,7 @@ const TREE_DATA: FoodNode[] = [
     children: [{name: ''}],
   },
   {
-    name: 'Laptops',
+    name: 'Usuarios',
     children: [{name: ''}],
   },
 ];
@@ -50,10 +51,25 @@ export class TreeComponent {
   
   constructor(public dialog: MatDialog) {
     this.dataSource.data = TREE_DATA;
-
   }
-  openDialog() {
+
+  button1Click(node: any) {
+    // Lógica para el botón 1
+    console.log('Botón 1 clicado para el nodo:', node.field1);
+  }
+  
+  button2Click(node: any) {
+    // Lógica para el botón 2
+    console.log('Botón 2 clicado para el nodo:', node.field2);
+  }
+  
+
+  openPost() {
     this.dialog.open(PostCreateComponent);
+  }
+
+  openUser(){
+    this.dialog.open(UserCreateComponent);
   }
 
   hasChild = (_: number, node: FoodNode) => !!node.children && node.children.length > 0;

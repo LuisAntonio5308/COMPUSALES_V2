@@ -46,6 +46,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatChipListboxComponent } from './Posts/mat-chip-listbox/mat-chip-listbox.component';
 import { ProgressBarConfigurableExample } from './Posts/progress-bar-indeterminate-example/progress-bar';
 import { ToolbarOverviewExample } from './Posts/toolbar-overview-example/toolbar.component';
+import { AdminComponent } from './Views/admin/admin.component';
+import { ClientComponent } from './Views/client/client.component';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +61,9 @@ import { ToolbarOverviewExample } from './Posts/toolbar-overview-example/toolbar
     FooterComponent,
     CarruselComponent,
     MatChipListboxComponent,
-    ToolbarOverviewExample
+    ToolbarOverviewExample,
+    AdminComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,

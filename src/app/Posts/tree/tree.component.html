@@ -1,10 +1,32 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <!-- This is the tree node template -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <!-- Campo 1 -->
+    <span>{{node.field1}}</span>
+    <!-- Botón 1 -->
+    <button mat-icon-button (click)="button1Click(node)">
+      <mat-icon>star</mat-icon>
+    </button>
+    <!-- Campo 2 -->
+    <span>{{node.field2}}</span>
+    <!-- Botón 2 -->
+    <button mat-icon-button (click)="button2Click(node)">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-tree-node>
+  
+</mat-tree>
+
+
+
+<!--
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-  <!-- This is the tree node template for leaf nodes -->
+  
   <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
       {{node.name}}
-      <button mat-button (click)="openDialog()">Agregar</button>
+      <button mat-button (click)="openPost()">Agregar</button>
   </mat-tree-node>
-  <!-- This is the tree node template for expandable nodes -->
+  
   <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
       <div class="mat-tree-node">
         <button mat-icon-button matTreeNodeToggle
@@ -21,4 +43,11 @@
     </div>
   </mat-nested-tree-node>
 </mat-tree>
+-->
+
+
+
+
+
+
 

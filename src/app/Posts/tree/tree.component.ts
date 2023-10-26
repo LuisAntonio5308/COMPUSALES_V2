@@ -9,6 +9,7 @@ import { ViewChild } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
 import { PostCreateComponent } from '../Posts-create/post-create.component';
 import { UserCreateComponent } from 'src/app/Users/user-create/user-create.component';
+import { PostListComponent } from '../post-list/post-list.component';
 
 /**
  * Food data with nested structure.
@@ -54,6 +55,16 @@ export class TreeComponent {
   }
   openPostDialog(node: FoodNode) {
     const dialogRef = this.dialog.open(PostCreateComponent, {
+      data: { nodeData: node } // Puedes pasar datos adicionales al componente de creación de posts si es necesario
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Diálogo de creación de post cerrado');
+    });
+  }
+
+  openPostListDialog(node: FoodNode) {
+    const dialogRef = this.dialog.open(PostListComponent, {
       data: { nodeData: node } // Puedes pasar datos adicionales al componente de creación de posts si es necesario
     });
 

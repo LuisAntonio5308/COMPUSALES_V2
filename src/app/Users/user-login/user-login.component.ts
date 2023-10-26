@@ -66,7 +66,9 @@ this.users.forEach(element => {
         this.router.navigate(['/admin'])
       }else{
         if(element.role == this.cliente){
-            window.alert('HOLA CLIENTE')
+            window.alert('HOLA CLIENTE '+ element.user)
+            this.router.navigate(['/client'])
+
         }
       }
     
@@ -78,6 +80,7 @@ this.users.forEach(element => {
   signup() {
     //this.dialog.signup();
     window.alert("SIGNUP");
+  
   }
 
   login(form: NgForm){

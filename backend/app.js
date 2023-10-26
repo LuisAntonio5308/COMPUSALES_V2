@@ -7,12 +7,13 @@ const mongoose = require("mongoose");
 
 
 //mongodb+srv://Luis:<password>@proyecto-laov.ys4jzyc.mongodb.net/
+//mongodb+srv://josuemonjaras03:Monjaras1303@cluster0.yyssmmf.mongodb.net/
 
 const app = express();
 const user = express();
 
 //CAMBAR TU ESTA LINEA CON TU DIRECCION DE BASE DE DATOS DE MONGODB
-mongoose.connect("mongodb+srv://antonio:Prueba123@compusales.ztpvvnk.mongodb.net/node-angular")
+mongoose.connect("mongodb+srv://josuemonjaras03:Monjaras1303@cluster0.yyssmmf.mongodb.net/node-angular")
 .then(()=>{
     console.log('Base de datos Conectada');
 })
@@ -21,7 +22,7 @@ mongoose.connect("mongodb+srv://antonio:Prueba123@compusales.ztpvvnk.mongodb.net
 })
 
 
-//app
+//a
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 

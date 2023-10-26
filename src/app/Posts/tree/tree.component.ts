@@ -52,6 +52,15 @@ export class TreeComponent {
   constructor(public dialog: MatDialog) {
     this.dataSource.data = TREE_DATA;
   }
+  openPostDialog(node: FoodNode) {
+    const dialogRef = this.dialog.open(PostCreateComponent, {
+      data: { nodeData: node } // Puedes pasar datos adicionales al componente de creación de posts si es necesario
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Diálogo de creación de post cerrado');
+    });
+  }
 
   button1Click(node: any) {
     // Lógica para el botón 1

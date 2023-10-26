@@ -1,0 +1,76 @@
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+
+    <mat-form-field>
+      <input 
+      matInput 
+      type="text" 
+      name = "title"
+      ngModel
+      required
+      placeholder="User"
+      #title="ngModel">
+      <mat-error 
+      *ngIf="title.invalid">
+        Ingrese el nombre de Un Usuario
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        name="content"
+        ngModel
+        required
+        placeholder="Contraseña"
+        #content="ngModel"
+      />
+      <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
+
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Rol</mat-label>
+      <mat-select name="role" ngModel required #role="ngModel">
+        <mat-option value="ADMIN">ADMIN</mat-option>
+        <mat-option value="CLIENT">CLIENT</mat-option>
+      </mat-select>
+      <mat-error *ngIf="role.invalid">Selecciona un Rol</mat-error>
+    </mat-form-field>
+
+    <button 
+    mat-raised-button 
+    color = "primary"
+    type="submit">Guardar Usuario
+    </button>
+
+  </form>
+</mat-card>
+  
+
+
+<!--<mat-form-field>
+      <input
+        matInput
+        [type]="hide ? 'password' : 'text'"
+        name="content"
+        ngModel
+        required
+        placeholder="Contraseña"
+        #content="ngModel"
+      />
+      <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
+      <button
+        mat-button
+        matSuffix
+        (click)="togglePasswordVisibility()">
+        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>-->
+
+
+
+
+
+

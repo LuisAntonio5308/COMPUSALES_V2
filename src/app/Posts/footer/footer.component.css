@@ -1,0 +1,43 @@
+footer {
+    color: white;
+    /* position: fixed; (Eliminar esta línea) */
+    text-align: center;
+    /* bottom: 0px; (Eliminar esta línea) */
+    width: 100%;
+    background-color: #7B1FA2;
+  }
+  
+.table-container {
+    max-width: 100%; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centra horizontalmente el contenido de la tabla */
+  }
+  
+  /* Puedes agregar estilos adicionales según sea necesario */
+  /* Asegúrate de que la tabla tenga un ancho máximo para evitar desbordamientos */
+table-filtering-example {
+    max-width: 100%;
+  }
+  
+  /* Opcional: Aplica estilos adicionales según sea necesario para el diseño de la tabla */
+  table-filtering-example table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table-filtering-example th,
+  table-filtering-example td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table-filtering-example tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  /* Estilos para el contenedor personalizado de la tabla */
+.table-container {
+    max-width: 100%; /* Ancho máximo según tus necesidades */
+    margin: 0 auto; /* Centrar horizontalmente el contenido de la tabla */
+    /* Estilos adicionales según sea necesario */
+  }
+  

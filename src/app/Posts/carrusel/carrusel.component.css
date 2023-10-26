@@ -1,0 +1,67 @@
+.carousel {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  
+  .slide-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+  
+  }
+  
+  .slide {
+    width: 100%;
+    display: none;
+    transition: transform 0.5s ease;
+  }
+  
+  .slide img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .slide.active {
+    display: block;
+  }
+  
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  .carrusel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .slide {
+    flex: 0 0 auto;
+    width: 100%;
+    scroll-snap-align: start;
+  }
+  
+  button {
+    /* Tus estilos para los botones aquí */
+    
+  }
+  
+ 

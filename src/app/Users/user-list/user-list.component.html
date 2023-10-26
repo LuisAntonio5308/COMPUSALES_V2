@@ -1,0 +1,17 @@
+<mat-card>
+  </mat-card>
+<mat-accordion multi="true" *ngIf="users.length > 0">
+    <mat-expansion-panel *ngFor="let post of users">
+      <mat-expansion-panel-header >
+        {{post.user}}
+      </mat-expansion-panel-header>
+      <p>{{post.password}}</p>
+      <p>{{post.role}}</p>
+      <mat-action-row>
+        
+        <button mat-button color="warn" (click)="onDelete(post.id)">ELIMINAR</button>
+      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <p class="info-text mat-body-1" *ngIf="users.length <= 0"> No hay Usuarios Agregadas</p>
+  

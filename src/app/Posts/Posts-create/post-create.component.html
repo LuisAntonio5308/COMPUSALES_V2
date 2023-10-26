@@ -1,0 +1,65 @@
+<mat-card>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+
+    <mat-form-field>
+      <input 
+      matInput 
+      type="text" 
+      name = "title"
+      ngModel
+      required
+      placeholder="Usuario"
+      #title="ngModel">
+      <mat-error 
+      *ngIf="title.invalid">
+        Ingrese el nombre de Un Usuario
+      </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <input 
+      matInput
+      type="password"
+      rows="6" 
+      name = "content"
+      ngModel
+      required
+      placeholder="Contraseña"
+      #content="ngModel">
+    <mat-error 
+    *ngIf="content.invalid">
+      Ingrese alguna Contraseña
+    </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <textarea 
+      matInput rows="6" 
+      name = "price"
+      ngModel
+      required
+      pattern="^\d+(\.\d{1,2})?$"
+      placeholder="$ Precio"      
+      #content="ngModel">
+    </textarea>
+    <mat-error 
+    *ngIf="content.invalid">
+      Ingrese un Precio
+    </mat-error>
+    </mat-form-field>
+
+    <button 
+    mat-raised-button 
+    color = "primary"
+    type="submit">Guardar Usuario
+    </button>
+  </form>
+</mat-card>
+  
+
+
+
+
+
+

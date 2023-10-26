@@ -1,0 +1,24 @@
+
+<h2 style="color: white; background-color: #7B1FA2; text-align: center;">COMPUTADORAS</h2>
+<div class="carousel">
+    <button class="prev" (click)="prevSlide()">Anterior</button>
+    <div class="slide-container">
+        <div>
+            <mat-expansion-panel class="slide" *ngFor="let post of posts; let i = index" [ngClass]="{ 'active': i === currentIndex }">
+              <mat-expansion-panel-header >
+                Titulo: {{post.title}}
+              </mat-expansion-panel-header>
+              <p>Contenido: {{post.content}}</p>
+              <p>Precio: ${{ post.price }}</p> <!-- Mostrando el precio -->
+              <mat-action-row>
+                <button mat-button color="warn" (click)="onDelete(post.id)">ELIMINAR</button>
+                <mat-progress-bar mode="indeterminate" *ngIf="showProgressBar"></mat-progress-bar>
+              </mat-action-row>
+            </mat-expansion-panel>
+        </div>
+          <p class="info-text mat-body-1" style="color: white; background-color: 'primary';" *ngIf="posts.length <= 0"> No hay Computadoras Agregadas</p>
+    </div>
+    <button class="next" (click)="nextSlide()">Siguiente</button>
+  </div>
+   
+

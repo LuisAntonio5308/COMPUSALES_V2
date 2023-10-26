@@ -1,0 +1,50 @@
+main{
+    margin-top: 1rem auto;
+    margin-bottom: 1rem auto;
+}
+
+body{
+  height: 900px;
+  background-image: url("https://i.pinimg.com/originals/43/51/3d/43513de8592c2944006adad0045fadcd.gif");
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+}
+
+.purple-background {
+  background-color: purple;
+  /* Otras propiedades de estilo según sea necesario */
+}
+/* styles.css o tree.component.css */
+.small-tree {
+  font-size: 14px; /* Reduce el tamaño de la fuente */
+  max-height: 0;   /* Oculta el árbol al establecer su altura máxima en 0 */
+  overflow: hidden; /* Oculta el contenido que excede el tamaño máximo */
+  transition: max-height 0.3s ease-in-out; /* Agrega una transición suave para la animación */
+}
+
+.small-tree.active {
+  max-height: 200px; /* Muestra el árbol al establecer una altura máxima adecuada */
+}
+
+
+section{
+  display: flex;
+  width: auto;
+  height: 300px;
+}
+
+section img{
+  width: 0px;
+  flex-grow: 1;
+  object-fit: cover;
+  opacity: .6;
+}
+
+section img:hover{
+  cursor: crosshair;
+  width: 350px;
+  opacity: 1;
+  filter: contrast(120%);
+}

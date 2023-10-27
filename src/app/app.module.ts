@@ -49,6 +49,7 @@ import { ToolbarOverviewExample } from './Posts/toolbar-overview-example/toolbar
 import { AdminComponent } from './Views/admin/admin.component';
 import { ClientComponent } from './Views/client/client.component';
 import { ToolbarClienteComponent } from './Views/client/toolbar-cliente/toolbar-cliente.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -90,6 +91,7 @@ import { ToolbarClienteComponent } from './Views/client/toolbar-cliente/toolbar-
     MatDialogModule,
     MatMenuModule,
     ProgressBarConfigurableExample,
+    CommonModule
 
   ],
   providers: [PostService, UserService],

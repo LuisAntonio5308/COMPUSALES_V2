@@ -8,10 +8,10 @@
       <p>{{post.content}}</p>
       <p>Precio: ${{ post.price }}</p> <!-- Mostrando el precio -->
       <mat-action-row>
-        <button mat-button color="primary">EDITAR</button>
+        
         <button mat-button color="warn" (click)="onDelete(post.id)">ELIMINAR</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
-  <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No hay devoluciones Agregadas</p>
+  <p class="info-text mat-body-1" *ngIf="posts.length <= 0"> No hay Computadoras Registradas</p>
   

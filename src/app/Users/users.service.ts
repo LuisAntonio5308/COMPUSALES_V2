@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 
 import { Subject, Observable } from "rxjs";
 import {map} from 'rxjs/operators';
+import { MatDialog } from "@angular/material/dialog";
 
 
 @Injectable({providedIn: 'root'})
@@ -23,8 +24,10 @@ export class UserService{
     return this.idUser;
   }
 
-    constructor (private http: HttpClient){
+    constructor (private http: HttpClient, private dialog: MatDialog){
     }
+    //Mensaje de Registrar
+    
 
     //Cambiamos Posts
     getUsers(){
@@ -53,7 +56,7 @@ export class UserService{
             password: password,
             role: role
         };
-        
+
         this.http.post<{message: string}>('http://localhost:5000/api/users', post)
         .subscribe((responseData) => {
             console.log(responseData.message);

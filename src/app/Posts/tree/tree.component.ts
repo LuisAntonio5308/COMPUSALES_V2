@@ -24,13 +24,11 @@ interface FoodNode {
 
 const TREE_DATA: FoodNode[] = [
   {
-    name: 'Computadoras',
+    name: 'Control',
     children: [{name: ''}],
   },
-  {
-    name: 'Usuarios',
-    children: [{name: ''}],
-  },
+
+
 ];
 
 
@@ -66,6 +64,7 @@ export class TreeComponent {
   }
 
   openPostListDialog(node: FoodNode) {
+    
     const dialogRef = this.dialog.open(PostListComponent, {
       data: { nodeData: node } // Puedes pasar datos adicionales al componente de creación de posts si es necesario
     });

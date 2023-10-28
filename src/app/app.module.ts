@@ -23,9 +23,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatExpansionModule} from '@angular/material/expansion';
-
 import {HttpClientModule} from '@angular/common/http';
-
 import { MatSelectModule } from '@angular/material/select';
 import { UserLoginComponent } from './Users/user-login/user-login.component';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,11 +32,7 @@ import { TableFilteringExample } from './Posts/table-filtering-example/table-fil
 import { FooterComponent } from './Posts/footer/footer.component';
 import { CarruselComponent } from './Posts/carrusel/carrusel.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
 import {MatTreeModule} from '@angular/material/tree';
-
-
-
 import { DialogComponent } from './Posts/dialog/dialog.component';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -53,6 +47,8 @@ import { ToolbarClientComponent } from './Views/client/toolbar-client/toolbar-cl
 import { CommonModule } from '@angular/common';
 
 import { TreeComponent } from './Posts/tree/tree.component';
+import { MessageExitComponent } from './Users/message-exit/message-exit.component';
+import { SignUpComponent } from './Users/sign-up/sign-up.component';
 
 
 @NgModule({
@@ -69,7 +65,9 @@ import { TreeComponent } from './Posts/tree/tree.component';
     ToolbarOverviewExample,
     AdminComponent,
     ClientComponent,
-    ToolbarClientComponent
+    ToolbarClientComponent,
+    MessageExitComponent,
+    SignUpComponent
     
   ],
   imports: [

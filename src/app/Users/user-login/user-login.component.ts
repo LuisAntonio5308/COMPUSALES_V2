@@ -10,6 +10,7 @@ import { User } from "../user.model";
 import {Subscription} from "rxjs";
 import { Router } from '@angular/router';
 import { UserListComponent } from '../user-list/user-list.component';
+import { SignUpComponent } from '../sign-up/sign-up.component';
 
 
 
@@ -31,7 +32,7 @@ export class UserLoginComponent implements OnInit, OnDestroy{
   cliente = 'CLIENT';
   admin = 'ADMIN';
 
-  constructor(public usersService: UserService, private router: Router){}
+  constructor(public usersService: UserService, private router: Router, private dialog: MatDialog){}
 //, private user: UserListComponent
   ngOnInit(){
     this.usersService.getUsers();
@@ -84,8 +85,8 @@ this.users.forEach(element => {
 
   
   signup() {
-    //this.dialog.signup();
-    window.alert("SIGNUP");
+    this.dialog.open(SignUpComponent);
+    
   
   }
 

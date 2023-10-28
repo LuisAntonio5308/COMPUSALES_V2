@@ -37,7 +37,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 import {MatTreeModule} from '@angular/material/tree';
 
-import { TreeComponent } from './Posts/tree/tree.component';
+
 
 import { DialogComponent } from './Posts/dialog/dialog.component';
 import {MatChipsModule} from '@angular/material/chips';
@@ -48,9 +48,11 @@ import { ProgressBarConfigurableExample } from './Posts/progress-bar-indetermina
 import { ToolbarOverviewExample } from './Posts/toolbar-overview-example/toolbar.component';
 import { AdminComponent } from './Views/admin/admin.component';
 import { ClientComponent } from './Views/client/client.component';
+
 import { ToolbarClientComponent } from './Views/client/toolbar-client/toolbar-client.component';
 import { CommonModule } from '@angular/common';
 
+import { TreeComponent } from './Posts/tree/tree.component';
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import { CommonModule } from '@angular/common';
     AdminComponent,
     ClientComponent,
     ToolbarClientComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -86,14 +89,13 @@ import { CommonModule } from '@angular/common';
     TableFilteringExample,
     MatProgressBarModule,
     MatTreeModule,
-    TreeComponent,
     DialogComponent,
     MatChipsModule,
     MatDialogModule,
     MatMenuModule,
     ProgressBarConfigurableExample,
-    CommonModule
-
+    CommonModule,
+    TreeComponent
   ],
   providers: [PostService, UserService],
   bootstrap: [AppComponent]

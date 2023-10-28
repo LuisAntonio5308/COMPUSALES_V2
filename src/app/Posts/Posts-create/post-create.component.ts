@@ -27,7 +27,7 @@ export class PostCreateComponent{
         this.postsService.addPost(form.value.title, form.value.content, form.value.price);
         form.resetForm();
         // Reiniciar la página después de la eliminación
-        window.location.reload();
+        //window.location.reload();
     }
   }
 

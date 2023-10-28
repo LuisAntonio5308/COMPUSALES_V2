@@ -48,6 +48,9 @@ import { ProgressBarConfigurableExample } from './Posts/progress-bar-indetermina
 import { ToolbarOverviewExample } from './Posts/toolbar-overview-example/toolbar.component';
 import { AdminComponent } from './Views/admin/admin.component';
 import { ClientComponent } from './Views/client/client.component';
+import { ToolbarClientComponent } from './Views/client/toolbar-client/toolbar-client.component';
+import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
@@ -63,7 +66,8 @@ import { ClientComponent } from './Views/client/client.component';
     MatChipListboxComponent,
     ToolbarOverviewExample,
     AdminComponent,
-    ClientComponent
+    ClientComponent,
+    ToolbarClientComponent
   ],
   imports: [
     BrowserModule,
@@ -88,6 +92,7 @@ import { ClientComponent } from './Views/client/client.component';
     MatDialogModule,
     MatMenuModule,
     ProgressBarConfigurableExample,
+    CommonModule
 
   ],
   providers: [PostService, UserService],

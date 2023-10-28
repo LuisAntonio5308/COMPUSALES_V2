@@ -38,7 +38,7 @@ export class CarruselComponent implements OnInit, OnDestroy {
       this.showProgressBar = false;
 
       // Reiniciar la página después de la eliminación
-      window.location.reload();
+      //window.location.reload();
 
       }, 1500); // 2000 milisegundos (2 segundos)
     }

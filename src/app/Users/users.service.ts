@@ -2,7 +2,7 @@ import {Injectable, assertPlatform} from "@angular/core";
 import { User } from "./user.model";
 import { HttpClient } from "@angular/common/http";
 
-import { Subject } from "rxjs";
+import { Subject, Observable } from "rxjs";
 import {map} from 'rxjs/operators';
 
 
@@ -11,10 +11,21 @@ import {map} from 'rxjs/operators';
 export class UserService{
     private users: User[] = []; //Primera Matriz
     private usersUpdate = new Subject<User[]>(); //Actualizacion de los datos
+    private method1Called = new Subject<void>();
+
+    private idUser: string;
+
+  setIdUser(idUser: string) {
+    this.idUser = idUser;
+  }
+
+  getIdUser() {
+    return this.idUser;
+  }
 
     constructor (private http: HttpClient){
     }
-    
+
     //Cambiamos Posts
     getUsers(){
         this.http.get<{message: string, users: any}>('http://localhost:5000/api/users')
@@ -31,14 +42,9 @@ export class UserService{
         .subscribe((PublicacionesTransformada) => {
             this.users = PublicacionesTransformada;
             this.usersUpdate.next([...this.users]);
-        }, (error) => {
-            console.error('Error al obtener los usuarios:', error);
-        });
-    }
+        });}
+
     
-    getUserUpdateListerner(){
-        return this.usersUpdate.asObservable();
-    }
 
     addUser(user: string, password: string, role: string){
         const post: User = {
@@ -47,6 +53,7 @@ export class UserService{
             password: password,
             role: role
         };
+        
         this.http.post<{message: string}>('http://localhost:5000/api/users', post)
         .subscribe((responseData) => {
             console.log(responseData.message);
@@ -62,6 +69,13 @@ export class UserService{
             console.log('ELIMINADO');
         });
     }
+
+    getUserUpdateListerner(){
+        return this.usersUpdate.asObservable();
+    }
+    
+
+
 }
 
 

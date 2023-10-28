@@ -9,6 +9,8 @@ import { OnDestroy, OnInit} from "@angular/core";
 import { User } from "../user.model";
 import {Subscription} from "rxjs";
 import { Router } from '@angular/router';
+import { UserListComponent } from '../user-list/user-list.component';
+
 
 
 @Component({
@@ -30,7 +32,7 @@ export class UserLoginComponent implements OnInit, OnDestroy{
   admin = 'ADMIN';
 
   constructor(public usersService: UserService, private router: Router){}
-
+//, private user: UserListComponent
   ngOnInit(){
     this.usersService.getUsers();
     this.usersSub = this.usersService.getUserUpdateListerner()
@@ -49,7 +51,6 @@ ngOnDestroy(){
     this.usersSub.unsubscribe();
 }
 
-  
 
   sign(){
 
@@ -63,7 +64,12 @@ this.users.forEach(element => {
   if(user==element.user && password==element.password){
     window.alert('ACCESO CONCEDIDO' + element.user);
       if(element.role == this.admin){
+        //this.user.getUser(element.id);
+        this.usersService.setIdUser(element.id);
+        window.alert(element.id);
         this.router.navigate(['/admin'])
+
+        
       }else{
         if(element.role == this.cliente){
             window.alert('HOLA CLIENTE '+ element.user)

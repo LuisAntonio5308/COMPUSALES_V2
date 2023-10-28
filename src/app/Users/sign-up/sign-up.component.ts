@@ -27,7 +27,8 @@ export class SignUpComponent {
       return;
       }
         this.usersService.addUser(form.value.title, form.value.content, 'CLIENT');
+        window.alert('Usuario Agregado Satisfactoriamente ['+form.value.title+']')
         form.resetForm();
-        
     }
+
 }

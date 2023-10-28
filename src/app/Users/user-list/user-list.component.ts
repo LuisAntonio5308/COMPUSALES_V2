@@ -4,6 +4,7 @@ import { UserService } from "../users.service";
 import {Subscription} from "rxjs";
 import { NgForm } from "@angular/forms";
 import { MatExpansionPanel } from '@angular/material/expansion';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -53,24 +54,29 @@ export class UserListComponent{
 
 
     onDelete(postId: string){
-        window.alert(this.idUser +' --   '+postId);
         
-        for (let i = 0; i < 2; i++) {
-            if(this.idUser == postId){
-                if(this.enter == true){
-                    window.alert('User in Use - Impossible Delete')
-                    this.enter=false;
+        if(this.idUser===''){
+            window.alert('NO SE HA INICIADO SESION CORRECTAMENTE');
+        }else{
+            for (let i = 0; i < 2; i++) {
+                if(this.idUser == postId){
+                    if(this.enter == true){
+                        window.alert('User in Use - Impossible Delete')
+                        this.enter=false;
+                    }
+                }else{
+                    //window.alert('Se ha eliminado');
+                    this.usersService.deleteUser(postId);
+                    this.ngOnInit();
+                    this.ngOnDestroy();
+                    // Reiniciar la página después de la eliminación
+                   // window.location.reload();
                 }
-            }else{
-                //window.alert('Se ha eliminado');
-                this.usersService.deleteUser(postId);
-                this.ngOnInit();
-                this.ngOnDestroy();
-                // Reiniciar la página después de la eliminación
-               // window.location.reload();
-            }
-          }
-          this.enter=true;
+              }
+              this.enter=true;
+
+        }
+        
     }
 
     ngOnDestroy(){

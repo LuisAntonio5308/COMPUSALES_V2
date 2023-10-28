@@ -41,3 +41,19 @@ table-filtering-example {
     /* Estilos adicionales según sea necesario */
   }
   
+
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  
+  
+  /* Estilo para el footer */
+  .footer {
+    text-align: center;
+    padding: 10px;
+  }
+  
+  

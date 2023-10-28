@@ -24,11 +24,7 @@ export class UserLoginComponent implements OnInit, OnDestroy{
   private usersSub: Subscription;
 
   hide = true;
-  
-  ///segunda modificacion
-  enteredTitle = '';
-  enteredContent = '';
-  enteredRole = '';
+  enter = false;
   cliente = 'CLIENT';
   admin = 'ADMIN';
 
@@ -40,9 +36,6 @@ export class UserLoginComponent implements OnInit, OnDestroy{
     .subscribe((users: User[]) =>{
       this.users = users;
 
-     /* this.users.forEach(element => {
-        window.alert(element.user+element.id+element.password+element.role)
-      });*/
         
     });
     
@@ -63,24 +56,26 @@ const password = passwordElement.value;
 
 this.users.forEach(element => {
   if(user==element.user && password==element.password){
-    window.alert('ACCESO CONCEDIDO' + element.user);
+    this.enter = true;
+    window.alert('ACCESO CONCEDIDO ADMIN -' + element.user);
       if(element.role == this.admin){
         //this.user.getUser(element.id);
         this.usersService.setIdUser(element.id);
-        window.alert(element.id);
         this.router.navigate(['/admin'])
-
-        
       }else{
         if(element.role == this.cliente){
-            window.alert('HOLA CLIENTE '+ element.user)
+            window.alert('HOLA CLIENTE - '+ element.user)
             this.router.navigate(['/client'])
-
         }
       }
-    
     }
   });
+  if(this.enter === false){
+      window.alert('Usuario y/o Contraseña Incorrecta')
+  }
+
+  
+
   }
 
   
@@ -90,19 +85,6 @@ this.users.forEach(element => {
   
   }
 
-  login(form: NgForm){
-
-    if(form.invalid){
-      console.log('no se pudo');
-      return;
-      }
-      console.log('si se pudo');
-      console.log(form.value.title + form.value.content);
-      /*
-        this.usersService.addUser(form.value.title, form.value.content, form.value.role);
-        form.resetForm();
-        */
-    }
 
     togglePasswordVisibility() {
       this.hide = !this.hide;

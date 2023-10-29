@@ -35,11 +35,8 @@ export class UserLoginComponent implements OnInit, OnDestroy{
     this.usersSub = this.usersService.getUserUpdateListerner()
     .subscribe((users: User[]) =>{
       this.users = users;
-
-        
     });
-    
-}
+  }
 
 ngOnDestroy(){
     this.usersSub.unsubscribe();
@@ -54,11 +51,14 @@ const user = userElement.value;
 const passwordElement = document.getElementById("password") as HTMLInputElement;
 const password = passwordElement.value;
 
+//FOR EACH PARA RECORRER EL ARREGLO DE USUARIOS
 this.users.forEach(element => {
+  //Si los datos del Usuario y password coinciden entra a la pagina
   if(user==element.user && password==element.password){
     this.enter = true;
-    window.alert('ACCESO CONCEDIDO ADMIN -' + element.user);
+    window.alert('ACCESO CONCEDIDO ADMIN - ' + element.user);
       if(element.role == this.admin){
+
         //this.user.getUser(element.id);
         this.usersService.setIdUser(element.id);
         this.router.navigate(['/admin'])
@@ -73,16 +73,11 @@ this.users.forEach(element => {
   if(this.enter === false){
       window.alert('Usuario y/o Contraseña Incorrecta')
   }
-
-  
-
   }
 
   
   signup() {
     this.dialog.open(SignUpComponent);
-    
-  
   }
 
 

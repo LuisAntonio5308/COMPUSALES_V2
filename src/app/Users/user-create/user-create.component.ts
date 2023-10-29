@@ -1,9 +1,7 @@
 import { Component, OnInit} from "@angular/core";
 
-import { User } from "../user.model";
 import { NgForm } from "@angular/forms";
 import { UserService } from "../users.service";
-import { withNoDomReuse } from "@angular/platform-browser";
 
 @Component({
     selector: 'app-user-create',
@@ -29,8 +27,6 @@ export class UserCreateComponent implements OnInit{
         this.usersService.addUser(form.value.title, form.value.content, form.value.role);
         form.resetForm();
         
-        // Reiniciar la página después de la eliminación
-        //window.location.reload();
     }
   }
 

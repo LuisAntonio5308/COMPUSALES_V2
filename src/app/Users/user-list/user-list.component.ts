@@ -2,9 +2,6 @@ import { Component, Input, OnDestroy, OnInit, Output, ViewChild } from "@angular
 import { User } from "../user.model";
 import { UserService } from "../users.service";
 import {Subscription} from "rxjs";
-import { NgForm } from "@angular/forms";
-import { MatExpansionPanel } from '@angular/material/expansion';
-import { Router } from "@angular/router";
 
 
 @Component({
@@ -25,14 +22,6 @@ export class UserListComponent{
 
     constructor(public usersService: UserService){}
     
-    /*
-    getUser(postId: string){
-        this.idUser=postId
-        window.alert(this.idUser)
-    }
-    callMethod1() {
-        this.usersService.callMethod1();
-      }*/
 
     ngOnInit(){
         this.usersService.getUsers();
@@ -47,7 +36,6 @@ export class UserListComponent{
             if(this.idUser == ''){
                 this.idUser = this.aux;
             }
-            
         }
 
     }
@@ -65,7 +53,6 @@ export class UserListComponent{
                         this.enter=false;
                     }
                 }else{
-                    //window.alert('Se ha eliminado');
                     this.usersService.deleteUser(postId);
                     this.ngOnInit();
                     this.ngOnDestroy();
@@ -82,8 +69,5 @@ export class UserListComponent{
     ngOnDestroy(){
         this.usersSub.unsubscribe();
     }
-
-    
-
 
 }

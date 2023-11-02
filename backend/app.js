@@ -2,7 +2,6 @@ const express = require('express');
 const bodyParser = require("body-parser");
 const Post = require('./models/post');
 const User = require('./models/user');
-
 const mongoose = require("mongoose");
 
 
@@ -22,7 +21,7 @@ mongoose.connect("mongodb+srv://antonio:Prueba123@compusales.ztpvvnk.mongodb.net
 })
 
 
-//a
+//app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
@@ -66,6 +65,8 @@ app.delete("/api/posts/:id", (req, res, next) =>{
     })
     res.status(200).json({message: 'Publicacion Eliminada'});
 })
+
+
 
 //User
 user.use(bodyParser.json());
@@ -117,10 +118,4 @@ module.exports = app;
 module.exports = user;
 */
 
-module.exports = { app, user };
-
-
-
-
-
-
+module.exports = { app, user};

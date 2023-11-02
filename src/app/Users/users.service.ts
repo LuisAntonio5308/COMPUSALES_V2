@@ -12,8 +12,8 @@ import { MatDialog } from "@angular/material/dialog";
 export class UserService{
     private users: User[] = []; //Primera Matriz
     private usersUpdate = new Subject<User[]>(); //Actualizacion de los datos
-    private method1Called = new Subject<void>();
-
+    
+    //Id_User
     private idUser: string;
 
   setIdUser(idUser: string) {
@@ -48,7 +48,7 @@ export class UserService{
         });}
 
     
-
+    //Agregar Usuario
     addUser(user: string, password: string, role: string){
         const post: User = {
             id: null,
@@ -76,8 +76,6 @@ export class UserService{
     getUserUpdateListerner(){
         return this.usersUpdate.asObservable();
     }
-    
-
 
 }
 

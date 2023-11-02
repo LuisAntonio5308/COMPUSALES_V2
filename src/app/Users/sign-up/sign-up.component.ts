@@ -15,8 +15,6 @@ export class SignUpComponent {
   constructor(public usersService: UserService){}
   hide = true;
   
-  
-
   ngOnInit(){
     this.usersService.getUsers();
 
@@ -30,5 +28,4 @@ export class SignUpComponent {
         window.alert('Usuario Agregado Satisfactoriamente ['+form.value.title+']')
         form.resetForm();
     }
-
 }

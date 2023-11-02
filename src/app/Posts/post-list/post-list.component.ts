@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { Post } from "../post.model";
 import { PostService } from "../posts.service";
 import {Subscription} from "rxjs";
+import { UserService } from "src/app/Users/users.service";
 
 @Component({
     selector: 'app-post-list',
@@ -11,6 +12,10 @@ import {Subscription} from "rxjs";
 
 export class PostListComponent implements OnInit, OnDestroy{
     posts: Post[] = [];
+    idUser = "";
+    aux="";
+    enter = true;
+
     private postsSub: Subscription;
 
     constructor(public postsService: PostService){}
@@ -21,9 +26,14 @@ export class PostListComponent implements OnInit, OnDestroy{
         .subscribe((posts: Post[]) =>{
             this.posts = posts
         });
+
+         
+        
     }
 
     onDelete(postId: string){
+
+
           for (let i = 0; i < 2; i++) {
             this.postsService.deletePost(postId);
           this.ngOnInit();

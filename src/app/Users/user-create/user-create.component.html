@@ -1,9 +1,7 @@
 
-
 <mat-card>
   <h1>USUARIOS</h1>
   <form (submit)="onAddPost(postForm)" #postForm="ngForm">
-
     <mat-form-field>
       <input 
       matInput 
@@ -18,7 +16,6 @@
         Ingrese el nombre de Un Usuario
       </mat-error>
     </mat-form-field>
-
     <mat-form-field>
       <input
         matInput
@@ -30,9 +27,7 @@
         #content="ngModel"
       />
       <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
-
     </mat-form-field>
-
     <mat-form-field>
       <mat-label>Rol</mat-label>
       <mat-select name="role" ngModel required #role="ngModel">
@@ -41,13 +36,11 @@
       </mat-select>
       <mat-error *ngIf="role.invalid">Selecciona un Rol</mat-error>
     </mat-form-field>
-
     <button 
     mat-raised-button 
     color = "primary"
     type="submit">Guardar Usuario
     </button>
-
   </form>
 </mat-card>
   

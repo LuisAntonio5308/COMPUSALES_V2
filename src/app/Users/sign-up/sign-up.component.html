@@ -1,7 +1,6 @@
 <mat-card>
     <h1>USUARIO</h1>
     <form (submit)="onAddPost(postForm)" #postForm="ngForm">
-  
       <mat-form-field>
         <input 
         matInput 
@@ -17,7 +16,6 @@
         </mat-error>
       </mat-form-field>
       <div></div>
-  
       <mat-form-field>
         <input
           matInput
@@ -29,15 +27,12 @@
           #content="ngModel"
         />
         <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
-  
       </mat-form-field>
       <div></div>
-  
       <button 
       mat-raised-button 
       color = "primary"
       type="submit">Guardar Usuario
       </button>
-  
     </form>
   </mat-card>

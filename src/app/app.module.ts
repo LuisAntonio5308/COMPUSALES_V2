@@ -49,6 +49,12 @@ import { CommonModule } from '@angular/common';
 import { TreeComponent } from './Posts/tree/tree.component';
 import { MessageExitComponent } from './Users/message-exit/message-exit.component';
 import { SignUpComponent } from './Users/sign-up/sign-up.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ReactiveFormsModule } from '@angular/forms';
+import { UserRecoveryComponent } from './Users/user-recovery/user-recovery.component';
+
+import { PdfService } from './Posts/pdf.service';
+
 
 
 @NgModule({
@@ -67,7 +73,8 @@ import { SignUpComponent } from './Users/sign-up/sign-up.component';
     ClientComponent,
     ToolbarClientComponent,
     MessageExitComponent,
-    SignUpComponent
+    SignUpComponent,
+    UserRecoveryComponent
     
   ],
   imports: [
@@ -93,9 +100,11 @@ import { SignUpComponent } from './Users/sign-up/sign-up.component';
     MatMenuModule,
     ProgressBarConfigurableExample,
     CommonModule,
-    TreeComponent
+    TreeComponent,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule
   ],
-  providers: [PostService, UserService],
+  providers: [PostService, UserService, PdfService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

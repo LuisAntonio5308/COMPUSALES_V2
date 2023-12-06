@@ -18,7 +18,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
 export class UserLoginComponent implements OnInit, OnDestroy{
   users: User[] = [];
   private usersSub: Subscription;
-
+  verified = false;
   hide = true;
   enter = false;
   cliente = 'CLIENT';
@@ -41,26 +41,33 @@ ngOnDestroy(){
 
   sign(){
     // Obtén una referencia al elemento de entrada de texto
-  const userElement = document.getElementById("user") as HTMLInputElement;
-  const user = userElement.value;
+  const nameElement = document.getElementById("name") as HTMLInputElement;
+  const name = nameElement.value;
   const passwordElement = document.getElementById("password") as HTMLInputElement;
   const password = passwordElement.value;
 
+ 
 //FOR EACH PARA RECORRER EL ARREGLO DE USUARIOS
 this.users.forEach(element => {
+ // window.alert(element.isVerified);
   //Si los datos del Usuario y password coinciden entra a la pagina
-  if(user==element.user && password==element.password){
-    this.enter = true;
+  if(name==element.name && password==element.password){
+        this.enter = true;
+      if(element.isVerified==true){
+        this.verified=true;
       if(element.role == this.admin){
-        window.alert('ADMIN - ' + element.user);
+        window.alert('ADMIN - ' + element.name);
         //this.user.getUser(element.id);
         this.usersService.setIdUser(element.id);
         this.router.navigate(['/admin'])
       }else{
         if(element.role == this.cliente){
-            window.alert('CLIENTE - '+ element.user)
+            window.alert('CLIENTE - '+ element.name)
             this.router.navigate(['/client'])
         }
+      }
+      }else{
+        window.alert('Cuenta No verificada');
       }
     }
   });
@@ -68,6 +75,11 @@ this.users.forEach(element => {
   if(this.enter === false){
       window.alert('Usuario y/o Contraseña Incorrecta')
   }
+
+  
+    
+  
+
   }
 
   

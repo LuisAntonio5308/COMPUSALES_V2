@@ -3,30 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - Animated Login form</title>
-  <link rel="stylesheet" href="./user-login.component.css">
+  <link rel="stylesheet" href="./user-recovery.component.css">
 
 </head>
 <body>
 <!-- partial:index.partial.html -->
 <div class="container">
   <div class="login-box">
-    <h2>Login CompuSales</h2>
+    <h2>Recovery Password</h2>
     <form action="#">
       <div class="input-box">
         <input id="name" type="text" required>
         <label>User</label>
       </div>
+
       <div class="input-box">
-        <input id="password" type="password" required>
-        <label>Password</label>
+        <input id="email" type="text" required>
+        <label>email</label>
       </div>
 
-      <div class="signup-link">
-          <a href="/recovery">¿Olvidaste la contraseña?</a>
+      <div class="select-box">
+          <mat-label>Rol</mat-label>
+          <mat-select name="role" [(ngModel)]="selectedRole" required #roleModel="ngModel">
+          <mat-option value="ADMIN">ADMIN</mat-option>
+          <mat-option value="CLIENT">CLIENT</mat-option>
+          </mat-select>
+          <mat-error *ngIf="roleModel.invalid">Selecciona un Rol</mat-error>
+      </div>
+
+      <button type="submit" class="btn" (click)="sign()">Recuperar</button>
+
+      <!--<div class="signup-link">
+          <a href="/admin">¿Olvidaste la contraseña?</a>
       </div>
 
       <button type="submit" class="btn" (click)="sign()">Login</button>
-      <button type="submit" class="btn1" (click)="signup()">SignUp</button>
+      <button type="submit" class="btn1" (click)="signup()">SignUp</button>-->
       
     </form>
   </div>

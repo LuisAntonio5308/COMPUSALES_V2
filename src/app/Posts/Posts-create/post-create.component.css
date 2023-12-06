@@ -1,15 +1,32 @@
+
 mat-form-field,
-textarea{
+    textarea{
         width: 100%;
     }
-
-mat-card{
-width: 50%;
- margin: auto
-}
-
-.h1{
-    text-align: center;
-    color: white;
+h2{
     background-color: black;
+    color: aliceblue;
+    text-align: center;
 }
+
+input[type = "file"]{
+    visibility: hidden;
+}
+.image-preview img{
+    border: 1px solid;
+    max-width: 300px;
+    max-height: 300px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    
+  }
+
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  

@@ -1,73 +1,68 @@
+//aplicacion que va ser que funcione importar expreess
 const express = require('express');
 const bodyParser = require("body-parser");
 const Post = require('./models/post');
 const User = require('./models/user');
 const mongoose = require("mongoose");
 
+const postsRouters = require('./routes/posts');
+const path = require('path');
+const path1 = require('path');
 
-//mongodb+srv://Luis:<password>@proyecto-laov.ys4jzyc.mongodb.net/
-//mongodb+srv://josuemonjaras03:Monjaras1303@cluster0.yyssmmf.mongodb.net/
+//User
+const usersRouters = require('./routes/users');
 
 const app = express();
 const user = express();
 
-//CAMBAR TU ESTA LINEA CON TU DIRECCION DE BASE DE DATOS DE MONGODB
+//Conectamos a nuestra base de datos
+//mongoose.connect("mongodb+srv://lrs20110814:Garcis95@cluster0.lcbkv1z.mongodb.net/node-angular")
 mongoose.connect("mongodb+srv://antonio:Prueba123@compusales.ztpvvnk.mongodb.net/node-angular")
+//comprobacion de que todo esta bien la conexion
 .then(()=>{
-    console.log('Base de datos Conectada');
+    console.log('Base de datos conectada');
 })
-.catch(() => {
-    console.log('Conexion Fallida');
-})
+.catch(()=>{
+    console.log('Conexion fallida');
+});
 
 
-//app
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use("/images", express.static(path.join("backend/images")));
+app.use((req , res, next)=>{
+    // Permisos
+res.setHeader("Access-Control-Allow-Origin", "*")
+res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+res.setHeader("Access-Control-Allow-Methods","GET, POST, PATCH,PUT,  DELETE, OPTIONS");
+  next();
+});
 
-app.use((req, res, next) => {
+
+//USER
+user.use(bodyParser.json());
+user.use(bodyParser.urlencoded({extended: false}));
+user.use("/images", express.static(path1.join("backend/images")));
+user.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept")
     res.setHeader("Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS");
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS");
     next();
 
 });
 
-//Metodo de Agregar Post
-app.post("/api/posts", (req, res, next) => {
-    const post = new Post({
-        title: req.body.title,
-        content: req.body.content,
-        price: req.body.price
-    });
-    post.save();
-    res.status(201).json({
-        message: 'Post Added Succesfully'
-    });
-});
+app.use("/api/posts", postsRouters);
+user.use("/api/users", usersRouters)
 
-//Metodo de obtener Informacion
-app.get('/api/posts', (req, res, next) => {
-    Post.find().then(documents => {
-        res.status(200).json({
-            message: 'Publicaciones expuestas con exito',
-            posts: documents
-        });
-    });
-});
 
-app.delete("/api/posts/:id", (req, res, next) =>{
-    Post.deleteOne({_id: req.params.id})
-    .then(result => {
-        console.log(result);
-    })
-    res.status(200).json({message: 'Publicacion Eliminada'});
-})
+//module.exports = user;
+module.exports = { app, user}
 
 
 
+/*
 //User
 user.use(bodyParser.json());
 user.use(bodyParser.urlencoded({extended: false}));
@@ -77,7 +72,7 @@ user.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept")
     res.setHeader("Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS");
+    "GET, POST, PATCH, DELETE, OPTIONS, PUT");
     next();
 
 });
@@ -116,6 +111,7 @@ user.delete("/api/users/:id", (req, res, next) =>{
 /*
 module.exports = app;
 module.exports = user;
-*/
+
 
 module.exports = { app, user};
+*/

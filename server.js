@@ -1,7 +1,7 @@
 const http = require('http');
 const debug = require("debug")("node-angular");
 const { app, user } = require('./backend/app'); // Importar app y user desde el archivo de la aplicación
-
+//const app = require('./backend/app')
 
 const normalizePort = val => {
     var port = parseInt(val, 10);
@@ -40,7 +40,7 @@ const onListening = () => {
 };
 
 const port = normalizePort(process.env.PORT || "3000");
-user.set('port', port);
+//user.set('port', port);
 app.set('port', port);
 
 const server = http.createServer(app); // Utiliza app como servidor

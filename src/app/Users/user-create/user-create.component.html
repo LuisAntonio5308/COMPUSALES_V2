@@ -1,41 +1,66 @@
 
 <mat-card>
   <h1>USUARIOS</h1>
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onAddUser()" #postForm="ngForm" *ngIf="!isLoading">
+
     <mat-form-field>
-      <input 
+      <input
       matInput 
       type="text" 
-      name = "title"
-      ngModel
-      required
-      placeholder="User"
-      #title="ngModel">
+      formControlName = "name"
+      placeholder="Nombre">
       <mat-error 
-      *ngIf="title.invalid">
+      *ngIf="form.get('name').invalid">
         Ingrese el nombre de Un Usuario
       </mat-error>
     </mat-form-field>
+
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()" >Selecciona una imagen</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+      <img [src]="imagePreview" [alt]="form.value.name">
+    </div>
+
+  <!--<div class="user-image" *ngIf="imagePreview === '' || !imagePreview || !form.get('image').valid">
+      <img [src]="user.imagePath" [alt]="user.name">
+    </div>-->
+
+    <mat-form-field>
+      <input
+      matInput 
+      type="email" 
+      formControlName = "email"
+      placeholder="email">
+      <mat-error 
+      *ngIf="form.get('email').invalid">
+        Ingrese Un correo Electronico
+      </mat-error>
+    </mat-form-field>
+
     <mat-form-field>
       <input
         matInput
         [type]="hide ? 'password' : 'text'"
-        name="content"
-        ngModel
-        required
+        rows="6"
+        formControlName="password"
         placeholder="Contraseña"
-        #content="ngModel"
-      />
-      <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
+      >
+      <mat-error *ngIf="form.get('password').invalid">Ingrese una contraseña</mat-error>
     </mat-form-field>
+    
     <mat-form-field>
       <mat-label>Rol</mat-label>
-      <mat-select name="role" ngModel required #role="ngModel">
+      <mat-select formControlName="role">
         <mat-option value="ADMIN">ADMIN</mat-option>
         <mat-option value="CLIENT">CLIENT</mat-option>
       </mat-select>
-      <mat-error *ngIf="role.invalid">Selecciona un Rol</mat-error>
+      <mat-error *ngIf="form.get('role').invalid">Selecciona un Rol</mat-error>
     </mat-form-field>
+
     <button 
     mat-raised-button 
     color = "primary"

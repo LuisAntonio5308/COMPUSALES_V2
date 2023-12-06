@@ -1,19 +1,25 @@
-<mat-card>
-  </mat-card>
-<mat-accordion multi="true" *ngIf="users.length > 0">
-    <mat-expansion-panel *ngFor="let post of users">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="users.length > 0 && !isLoading">
+    <mat-expansion-panel *ngFor="let user of users">
       <mat-expansion-panel-header >
-        {{post.user}}
+        {{user.name}}
       </mat-expansion-panel-header>
-      <p>{{post.password}}</p>
-      <p>{{post.role}}</p>
+
+      <div class="post-image">
+        <img [src]="user.imagePath" [alt]="user.name">
+      </div>
+      <p>{{user.email}}</p>
+      <p>{{user.password}}</p>
+      <p>{{user.role}}</p>
+      <p>{{user.isVerified}}</p>
       <mat-action-row>
+        <button mat-button color="primary" [routerLink]="['./editU', user.id]">Editar</button>
         <button mat-button color="warn"
-        (click)="onDelete(post.id)" 
+        (click)="onDelete(user.id)" 
         >ELIMINAR</button>
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
-  <p class="info-text mat-body-1" *ngIf="users.length <= 0"> No hay Usuarios Agregadas</p>
+  <p class="info-text mat-body-1" *ngIf="users.length <= 0 && !isLoading"> No hay Usuarios Agregadas</p>
 
   

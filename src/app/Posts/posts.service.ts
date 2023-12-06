@@ -27,6 +27,7 @@ export class PostService{
                     content: post.content,
                     price: post.price,
                     id: post._id,
+                    client: post.client,//clients
                     imagePath: post.imagePath
                 };
             });
@@ -37,8 +38,9 @@ export class PostService{
         });
     }
 
+    //clients: string[]
     getPost(id:string){
-        return this.http.get<{ _id: string, title: string, content: string, price: number, imagePath: string}>(
+        return this.http.get<{ _id: string, title: string, content: string, price: number, client: string, imagePath: string }>(
             "http://localhost:3000/api/posts/" + id
         );
     }
@@ -53,6 +55,7 @@ export class PostService{
             postData.append("title", title);
             postData.append("content", content);
             postData.append('price', price.toString());
+            postData.append('client', '');
             postData.append("image", image, title);
         } else{
             postData = {
@@ -60,9 +63,11 @@ export class PostService{
                 title: title,
                 content: content,
                 price: price,
-                imagePath: image
+                client: '',
+                imagePath: image,
             } as Post;
         }
+
         this.http.put("http://localhost:3000/api/posts/"+ id, postData)
         .subscribe(response =>{
             const updatePost = [...this.posts];
@@ -72,6 +77,7 @@ export class PostService{
                 title: title,
                 content: content,
                 price: price,
+                client: '',//clients
                 imagePath: ""
             }
             updatePost[oldPostIndex] = post;
@@ -91,6 +97,7 @@ export class PostService{
         postData.append("title", title),
         postData.append("content", content),
         postData.append("price", price.toString()),
+        postData.append('client', '');
         postData.append("image", image, title);
 
         this.http.post<{message: string, post: Post}>('http://localhost:3000/api/posts', postData)
@@ -100,6 +107,7 @@ export class PostService{
                 title: title,
                 content: content,
                 price: price,
+                client: '',//clients
                 imagePath: responseData.post.imagePath};
             this.posts.push(post);
             this.postsUpdate.next([...this.posts]);
@@ -116,6 +124,54 @@ export class PostService{
             this.postsUpdate.next([...this.posts]); 
         });
     }
+
+
+      
+      addClient(id: string, title: string, content: string, price: number, client:string, image: File | string){
+        //const post: Post = {id: id, title: title, content: content, imagePath: null}
+        let postData: Post | FormData;
+        
+        if(typeof (image) === "object"){
+            postData = new FormData();
+            postData.append("id", id);
+            postData.append("title", title);
+            postData.append("content", content);
+            postData.append('price', price.toString());
+            postData.append('client', client);
+            postData.append("image", image, title);
+        } else{
+            postData = {
+                id: id,
+                title: title,
+                content: content,
+                price: price,
+                client: client,
+                imagePath: image,
+            } as Post;
+        }
+
+        this.http.put("http://localhost:3000/api/posts/"+ id, postData)
+        .subscribe(response =>{
+            const updatePost = [...this.posts];
+            const oldPostIndex = updatePost.findIndex(p => p.id === id);
+            const post: Post = {
+                id: id,
+                title: title,
+                content: content,
+                price: price,
+                client: client,//clients
+                imagePath: ""
+            }
+            updatePost[oldPostIndex] = post;
+            this.posts = updatePost;
+            this.postsUpdate.next([...this.posts]);
+            this.router.navigate(["/client"]);
+        });
+    }
+      
+
+   
+
 }
 
 

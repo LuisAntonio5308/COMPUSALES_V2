@@ -8,7 +8,6 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 const jwt = require('jsonwebtoken');
 
-isVerified = false;
 email = '';
 
 const IMAGE_TYPE_MAP = {
@@ -77,6 +76,7 @@ router.post("", multer({storage: storage}).single("image"), async (req, res, nex
         role: req.body.role,
         email: req.body.email,
         isVerified: req.body.isVerified,
+        //computadoras: req.body.computadoras, Computadoras
         imagePath: url + "/images/" + req.file.filename
     });
 
@@ -207,7 +207,7 @@ router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) 
         password: req.body.password,
         role: req.body.role,
         email: req.body.email,
-        isVerified: this.isVerified,
+        isVerified: req.body.isVerified,
         imagePath: imagePath
     });
 

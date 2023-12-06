@@ -56,6 +56,6 @@ export class PostListComponent implements OnInit, OnDestroy{
         // Llama al servicio de PDF para generar el PDF
         this.pdfService.generatePdf(this.posts);
       }
-    
+ 
 
 }

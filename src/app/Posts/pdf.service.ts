@@ -9,7 +9,7 @@ export class PdfService {
   generatePdf(posts: Post[]): void {
     // Verifica si la lista de publicaciones está vacía
     if (posts.length === 0) {
-      alert('No hay publicaciones para imprimir.');
+      alert('No hay Computadoras para imprimir.');
       return; // Sale del método si no hay publicaciones
     }
 

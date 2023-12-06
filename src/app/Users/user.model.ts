@@ -4,6 +4,7 @@ export interface User{
     password: string;
     role: string;
     email: string;
-    isVerified: boolean; //Agregar
+    isVerified: boolean; //Verrificar que si se ha registrado
+    //computadoras: string[]; // Aquí se agrega el nuevo campo de tipo arreglo
     imagePath: string;
 }

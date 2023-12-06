@@ -38,7 +38,6 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatChipListboxComponent } from './Posts/mat-chip-listbox/mat-chip-listbox.component';
-import { ProgressBarConfigurableExample } from './Posts/progress-bar-indeterminate-example/progress-bar';
 import { ToolbarOverviewExample } from './Posts/toolbar-overview-example/toolbar.component';
 import { AdminComponent } from './Views/admin/admin.component';
 import { ClientComponent } from './Views/client/client.component';
@@ -54,6 +53,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UserRecoveryComponent } from './Users/user-recovery/user-recovery.component';
 
 import { PdfService } from './Posts/pdf.service';
+import { ClientInformationComponent } from './Views/client/client-information/client-information.component';
+import { UserSalesComponent } from './Users/user-sales/user-sales.component';
 
 
 
@@ -74,7 +75,9 @@ import { PdfService } from './Posts/pdf.service';
     ToolbarClientComponent,
     MessageExitComponent,
     SignUpComponent,
-    UserRecoveryComponent
+    UserRecoveryComponent,
+    ClientInformationComponent,
+    UserSalesComponent
     
   ],
   imports: [
@@ -98,7 +101,6 @@ import { PdfService } from './Posts/pdf.service';
     MatChipsModule,
     MatDialogModule,
     MatMenuModule,
-    ProgressBarConfigurableExample,
     CommonModule,
     TreeComponent,
     MatProgressSpinnerModule,

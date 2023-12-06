@@ -26,6 +26,7 @@ export class UserListComponent{
 
     ngOnInit(){
         this.isLoading = true;
+        
         this.usersService.getUsers();
         this.usersSub = this.usersService.getUserUpdateListerner()
         .subscribe((users: User[]) =>{
@@ -45,16 +46,9 @@ export class UserListComponent{
 
 
     onDelete(userId: string){
-
-        this.usersService.deleteUser(userId);
-                    //this.ngOnInit();
-                    //this.ngOnDestroy();
-
-        /*
         if(this.idUser===''){
             window.alert('NO SE HA INICIADO SESION CORRECTAMENTE');
         }else{
-            for (let i = 0; i < 2; i++) {
                 if(this.idUser == userId){
                     if(this.enter == true){
                         window.alert('User in Use - Impossible Delete')
@@ -64,17 +58,13 @@ export class UserListComponent{
                     this.usersService.deleteUser(userId);
                     this.ngOnInit();
                     this.ngOnDestroy();
-                    // Reiniciar la página después de la eliminación
-                   // window.location.reload();
                 }
-              }
+              
               this.enter=true;
 
-        }
-        */
+    
 
-        
-        
+        }
         
     }
 

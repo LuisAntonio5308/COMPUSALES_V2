@@ -7,16 +7,22 @@ import { PostListComponent } from './Posts/post-list/post-list.component';
 import { PostCreateComponent } from './Posts/Posts-create/post-create.component';
 import { UserCreateComponent } from './Users/user-create/user-create.component';
 import { UserRecoveryComponent } from './Users/user-recovery/user-recovery.component';
+import { UserSalesComponent } from './Users/user-sales/user-sales.component';
+
+
 
 
 const routes: Routes = [
-  { path: '', component: PostListComponent },
+  //{ path: '', component: PostListComponent },
+  { path: '', component: UserLoginComponent },
   { path: 'admin', component: AdminComponent },
   { path: 'client', component: ClientComponent },
   {path: 'home', component: UserLoginComponent},
   {path: 'edit/:postId', component: PostCreateComponent},
   {path: 'editU/:userId', component: UserCreateComponent},
-  {path: 'recovery', component: UserRecoveryComponent}
+  {path: 'recovery', component: UserRecoveryComponent},
+  {path: 'list', component: PostListComponent},
+  {path: 'sales', component: UserSalesComponent}
 ];
 
 @NgModule({

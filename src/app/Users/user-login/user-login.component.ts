@@ -62,6 +62,7 @@ this.users.forEach(element => {
         this.router.navigate(['/admin'])
       }else{
         if(element.role == this.cliente){
+          this.usersService.setIdUser(element.id);
             window.alert('CLIENTE - '+ element.name)
             this.router.navigate(['/client'])
         }
@@ -91,4 +92,12 @@ this.users.forEach(element => {
     togglePasswordVisibility() {
       this.hide = !this.hide;
     }
+
+    
+recovery(){
+  this.router.navigate(['/recovery'])
 }
+
+
+}
+

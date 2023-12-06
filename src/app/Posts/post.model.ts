@@ -3,5 +3,6 @@ export interface Post{
     title: string;
     content: string;
     price: number;
-    imagePath: string
+    client: string; //Clientes id
+    imagePath: string;
 }

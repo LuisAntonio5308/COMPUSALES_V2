@@ -55,15 +55,15 @@ export class UserService{
     getUsers(){
         this.http.get<{message: string, users: any}>('http://localhost:5000/api/users')
         .pipe(map((postData) => {
-            return postData.users.map(post => {
+            return postData.users.map(user => {
                 return {
-                    name: post.name,
-                    password: post.password,
-                    role: post.role,
-                    email: post.email,
-                    id: post._id,
-                    isVerified: post.isVerified,
-                    imagePath: post.imagePath
+                    name: user.name,
+                    password: user.password,
+                    role: user.role,
+                    email: user.email,
+                    id: user._id,
+                    isVerified: user.isVerified,
+                    imagePath: user.imagePath
                 };
             });
         }))
@@ -89,7 +89,7 @@ export class UserService{
             postData.append("password", password);
             postData.append("role", role);
             postData.append("email", email);
-            postData.append("isVerified", 'false');
+            postData.append("isVerified", 'true');
             postData.append("image", image, name);
         } else{
             postData = {
@@ -98,7 +98,7 @@ export class UserService{
                 password: password,
                 role: role,
                 email: email,
-                isVerified: false,
+                isVerified: true,
                 imagePath: image
             } as User;
         }
@@ -112,8 +112,8 @@ export class UserService{
                 password: password,
                 role: role,
                 email: email,
-                isVerified: false,
-                imagePath: ""
+                isVerified: true,
+                imagePath: ''
             }
             updateUser[oldUserIndex] = user;
             this.users = updateUser;
@@ -123,40 +123,6 @@ export class UserService{
     }
 
     
-    //Agregar cliente
-    /*
-    addClient(name: string, password: string, role: string, imagePath: string){
-        /*const postData = new FormData();
-        postData.append("name", name),
-        postData.append("password", password),
-        postData.append("role", role),
-        postData.append("image", image, name);
-        const user: User = {
-            id: null, // No necesitas establecer el ID aquí, ya que será proporcionado por el servidor
-            name: name,
-            password: password,
-            role: role,
-            imagePath: imagePath
-          };
-
-        this.http.post<{message: string, user: User}>('http://localhost:5000/api/users', user)
-        .subscribe((responseData) => {
-        const NewUser: User = {
-            id: responseData.user.id,
-            name: name, 
-            password: password,
-            role: role,
-            imagePath: imagePath
-        };
-            
-            this.users.push(user);
-            this.usersUpdate.next([...this.users]);
-            //this.router.navigate(["/"]);
-        })
-        
-
-    }*/
-
     
     //Agregar Usuario
     addUser(name: string, password: string, role: string, email: string, image: File): Observable<{ message: string, user: User, verificationToken: string }>{
@@ -204,9 +170,6 @@ export class UserService{
             this.usersUpdate.next([...this.users]); 
         });
     }
-      
-
-    
 
 }
 

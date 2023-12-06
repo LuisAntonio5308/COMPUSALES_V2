@@ -1,0 +1,28 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="cart-container">
+<h1>CARRITO</h1>
+
+<mat-accordion multi="true" *ngIf="sales.length > 0 && !isLoading">
+    <mat-expansion-panel *ngFor="let sale of sales">
+      <mat-expansion-panel-header >
+        {{sale.title}}
+      </mat-expansion-panel-header>
+      <div class="post-image">
+        <img [src]="sale.imagePath" [alt]="sale.title">
+      </div>
+      <p>{{sale.content}}</p>
+      <p>Precio: ${{ sale.price }}</p> <!-- Mostrando el precio -->
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+  <div class="button-container">
+    <button mat-button color="primary" (click)="compra()">Compra</button>
+  </div>
+
+  <div class="button-container">
+    <button mat-button color="warn" (click)="regresar()">Regresar</button>
+  </div>
+  
+  <p class="info-text mat-body-1" *ngIf="sales.length <= 0 && !isLoading"> No hay Computadoras Registradas</p>
+</div>

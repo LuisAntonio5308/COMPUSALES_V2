@@ -12,3 +12,44 @@ input[type = "file"]{
     border-radius: 5px;
     
   }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .image-preview {
+    margin-top: 15px;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  /* Ajuste de estilos específicos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .form-field {
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Ajustes generales para un diseño responsivo */
+mat-card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+
+  

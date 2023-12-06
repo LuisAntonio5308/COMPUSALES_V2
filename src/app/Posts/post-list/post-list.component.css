@@ -16,3 +16,17 @@ mat-card{
     margin: auto;
     margin-bottom: 1rem;
 }
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  /* Ajuste de estilos específicos para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .button-container {
+      margin-top: 10px;
+    }
+  }

@@ -4,6 +4,7 @@
   <mat-spinner class="spinner" *ngIf="isLoading"></mat-spinner>
   <form [formGroup]="form" (submit)="onAddUser()" #postForm="ngForm" *ngIf="!isLoading">
     <mat-form-field>
+
       <input
       matInput 
       type="text" 
@@ -15,6 +16,7 @@
       </mat-error>
     </mat-form-field>
 
+
     <div>
       <button mat-stroked-button type="button" (click)="filePicker.click()" >Selecciona una imagen</button>
       <input type="file" #filePicker (change)="onImagePicked($event)">
@@ -23,6 +25,9 @@
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
       <img [src]="imagePreview" [alt]="form.value.name">
     </div>
+
+<div></div>
+
 
     <mat-form-field>
       <input
@@ -36,6 +41,8 @@
       </mat-error>
     </mat-form-field>
     
+<div></div>
+
 
     <mat-form-field>
       <input
@@ -47,51 +54,13 @@
       >
       <mat-error *ngIf="form.get('password').invalid">Ingrese una contraseña</mat-error>
     </mat-form-field>
-    <button 
-    mat-raised-button 
-    color = "primary"
-    type="submit">Guardar Usuario
-    </button>
+
+    <div></div>
+
+    <div class="button-container">
+      <button mat-raised-button color="primary" type="submit">Guardar Usuario</button>
+    </div>
+
   </form>
 </mat-card>
   
-
-
-<!--<mat-card>
-    <h1>USUARIO</h1>
-    <form (submit)="onAddPost(postForm)" #postForm="ngForm">
-      <mat-form-field>
-        <input 
-        matInput 
-        type="text" 
-        name = "title"
-        ngModel
-        required
-        placeholder="User"
-        #title="ngModel">
-        <mat-error 
-        *ngIf="title.invalid">
-          Ingrese el nombre de Un Usuario
-        </mat-error>
-      </mat-form-field>
-      <div></div>
-      <mat-form-field>
-        <input
-          matInput
-          [type]="hide ? 'password' : 'text'"
-          name="content"
-          ngModel
-          required
-          placeholder="Contraseña"
-          #content="ngModel"
-        />
-        <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
-      </mat-form-field>
-      <div></div>
-      <button 
-      mat-raised-button 
-      color = "primary"
-      type="submit">Guardar Usuario
-      </button>
-    </form>
-  </mat-card>-->

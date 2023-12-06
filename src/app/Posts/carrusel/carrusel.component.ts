@@ -3,6 +3,10 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Post } from "../post.model";
 import { PostService } from "../posts.service";
 import { Subscription } from "rxjs";
+import { UserService } from "src/app/Users/users.service";
+import { FormGroup } from "@angular/forms";
+import { User } from "src/app/Users/user.model";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-carrusel',
@@ -15,17 +19,49 @@ export class CarruselComponent implements OnInit, OnDestroy {
   posts: Post[] = [];
   private postsSub: Subscription;
 
+  //User
+  users: User[] = [];
+    isLoading = false;
+    idUser = "";
+    aux="";
+    enter = true;
+    isAccordionOpen = true;
+    private usersSub: Subscription;
+
+
+
+
   showProgressBar = false; // Variable para controlar la visibilidad del progress bar
 
-  constructor(public postsService: PostService) { }
+  constructor(public postsService: PostService, public usersService: UserService, private router: Router) { }
   
     
     ngOnInit(){
+
+
         this.postsService.getPosts();
         this.postsSub = this.postsService.getPostUpdateListerner()
         .subscribe((posts: Post[]) =>{
             this.posts = posts
+
         });
+
+
+        this.usersService.getUsers();
+        this.usersSub = this.usersService.getUserUpdateListerner()
+        .subscribe((users: User[]) =>{
+            this.isLoading = false;
+            this.users = users
+        });
+
+         //Traer el id y verificar que no sea Indefinido
+         this.aux = this.usersService.getIdUser();
+         if(this.aux !== undefined){
+             if(this.idUser == ''){
+                 this.idUser = this.aux;
+             }
+         }
+
     }
 
     onDelete(postId: string){
@@ -33,12 +69,9 @@ export class CarruselComponent implements OnInit, OnDestroy {
     this.showProgressBar = true;
     // Simular una demora de 2 segundos antes de completar la eliminación
     setTimeout(() => {
-      this.postsService.deletePost(postId);
-    // Ocultar el progress bar cuando se completa la eliminación
+
       this.showProgressBar = false;
 
-      // Reiniciar la página después de la eliminación
-      //window.location.reload();
 
       }, 1500); // 2000 milisegundos (2 segundos)
     }
@@ -57,22 +90,20 @@ export class CarruselComponent implements OnInit, OnDestroy {
       this.currentIndex = (this.currentIndex + 1) % this.posts.length;
     }
 
-  
-/*
-  eliminarPost(post: Post) {
-    // Mostrar el progress bar cuando se inicia la eliminación
-    this.showProgressBar = true;
 
-    // Simular una demora de 2 segundos antes de completar la eliminación
-    setTimeout(() => {
-      this.postsService.deletePost(post)
-        .subscribe(() => {
-          // Ocultar el progress bar cuando se completa la eliminación
-          this.showProgressBar = false;
-        });
-    }, 2000); // 2000 milisegundos (2 segundos)
+    addClient(postId: string, title: string, content: string, price: number, image: string){
+      
+      if(this.idUser===''){
+        window.alert('NO SE HA INICIADO SESION CORRECTAMENTE');
+        this.router.navigate([''])
+
+        
+    }else{
+      this.postsService.addClient(postId, title, content, price,this.idUser, image);
+      window.alert('Se ha Agregado al Carrito: '+title);
+    }
   }
-*/
+
 
  
   

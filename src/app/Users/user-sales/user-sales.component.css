@@ -1,0 +1,33 @@
+.cart-container {
+    max-width: 1200px; /* Máximo ancho para evitar que el contenido sea demasiado ancho */
+    margin: 0 auto; /* Centrar en el medio */
+    padding: 20px; /* Agregar espacio alrededor del contenido */
+  }
+  
+  .mat-accordion {
+    margin-top: 20px;
+  }
+  
+  .post-image {
+    margin-top: 10px;
+  }
+  
+  .button-container {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .mat-accordion {
+      /* Ajustes específicos para pantallas más pequeñas */
+    }
+  
+    .post-image {
+      /* Ajustes específicos para pantallas más pequeñas */
+    }
+  
+    .button-container {
+      /* Ajustes específicos para pantallas más pequeñas */
+    }
+  }
+  

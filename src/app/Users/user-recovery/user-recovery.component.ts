@@ -111,24 +111,10 @@ this.users.forEach(element => {
 
   
   signup() {
-    /*
-     
-    //MANDAR EL CORREO
-      */
+    this.router.navigate(['/home'])
 
+
+  }
     
-    const subject = 'Asunto del correo';
-    const body = 'Cuerpo del correo';
-    const to = 'lo3977884@gmail.com';
-
-    this.usersService.sendEmail(subject, body, to).subscribe(
-      response => {
-        console.log('Correo enviado exitosamente:', response);
-      },
-      error => {
-        console.error('Error al enviar el correo:', error);
-      }
-    );
-     
-}
+    
 }

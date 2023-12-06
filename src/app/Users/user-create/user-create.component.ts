@@ -42,6 +42,7 @@ export class UserCreateComponent implements OnInit{
         validators: [Validators.required]}),
         'email': new FormControl(null, {
           validators: [Validators.required]}),
+          'isVerified': new FormControl(false),
       'image': new FormControl(null, {
           validators: [Validators.required],
       asyncValidators: [postImage]})
@@ -49,7 +50,7 @@ export class UserCreateComponent implements OnInit{
   
   this.route.paramMap.subscribe((paramMap: ParamMap) =>{
     if(paramMap.has('userId')){
-        this.mode = 'edit';
+        this.mode = 'editU';
         this.userId = paramMap.get('userId');
         this.isLoading = true;
        // Obtener subscripcion de los datos del post
@@ -62,7 +63,7 @@ export class UserCreateComponent implements OnInit{
                 password: postData.password, 
                 role: postData.role,
                 email: postData.email,
-                isVerified: postData.isVerified,
+                isVerified: false,
                 imagePath: postData.imagePath};
             this.form.setValue({
                 name: this.user.name,
@@ -125,6 +126,7 @@ export class UserCreateComponent implements OnInit{
        }
   
     }else{
+      
         this.usersService.updateUser(
             this.userId,
             this.form.value.name, 

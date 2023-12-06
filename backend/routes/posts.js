@@ -36,6 +36,7 @@ router.post("", multer({storage: storage}).single("image"), (req, res, next)=>{
         title: req.body.title,
         content: req.body.content,
         price: req.body.price,
+        client: req.body.client,//clients
         imagePath: url + "/images/" + req.file.filename
     });
 
@@ -65,6 +66,7 @@ router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) 
         title: req.body.title,
         content: req.body.content,
         price: req.body.price,
+        client: req.body.client,//Clients
         imagePath: imagePath
     });
 

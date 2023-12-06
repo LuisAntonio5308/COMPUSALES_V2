@@ -25,10 +25,6 @@
       <img [src]="imagePreview" [alt]="form.value.name">
     </div>
 
-  <!--<div class="user-image" *ngIf="imagePreview === '' || !imagePreview || !form.get('image').valid">
-      <img [src]="user.imagePath" [alt]="user.name">
-    </div>-->
-
     <mat-form-field>
       <input
       matInput 
@@ -69,27 +65,6 @@
   </form>
 </mat-card>
   
-
-
-<!--<mat-form-field>
-      <input
-        matInput
-        [type]="hide ? 'password' : 'text'"
-        name="content"
-        ngModel
-        required
-        placeholder="Contraseña"
-        #content="ngModel"
-      />
-      <mat-error *ngIf="content.invalid">Ingrese una contraseña</mat-error>
-      <button
-        mat-button
-        matSuffix
-        (click)="togglePasswordVisibility()">
-        <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-      </button>
-    </mat-form-field>-->
-
 
 
 

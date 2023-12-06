@@ -5,6 +5,7 @@ import { FormControl, FormGroup, NgForm, Validators } from "@angular/forms";
 import { ActivatedRoute, ParamMap } from "@angular/router";
 import { User } from '../user.model';
 import { postImage } from '../user-create/user-image.validator';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -26,6 +27,12 @@ export class SignUpComponent implements OnInit {
    form: FormGroup;
    imagePreview: string;
 
+  users: User[] = [];
+  private usersSub: Subscription;
+
+  enter = 0;
+
+
   
   ngOnInit(){
     this.form = new FormGroup({
@@ -41,63 +48,68 @@ export class SignUpComponent implements OnInit {
 
   });
 
-  /*
-  this.route.paramMap.subscribe((paramMap: ParamMap) =>{
-    if(paramMap.has('userId')){
-        this.mode = 'edit';
-        this.userId = paramMap.get('userId');
-        this.isLoading = true;
-       // Obtener subscripcion de los datos del post
-        this.usersService.getUser(this.userId).subscribe(postData =>{
-            //para que se detenga el pogressbar
-            this.isLoading = false;
-            this.user = {
-                id: postData._id, 
-                name: postData.name, 
-                password: postData.password, 
-                role: postData.role,
-                imagePath: postData.imagePath};
-            this.form.setValue({
-                name: this.user.name,
-                password: this.user.password,
-                role: this.user.role,
-                image: this.user.imagePath
-            });
-        });
-        
-    }else{
-        this.mode = 'create';
-        this.userId = null;
-    }
-   })
-   */
-
-
-
 
     this.usersService.getUsers();
+    this.usersSub = this.usersService.getUserUpdateListerner()
+    .subscribe((users: User[]) =>{
+      this.users = users;
+    });
 
 }
 
-  onAddUser(){
-    if(this.form.invalid){
-      return;
-      }
-      /*window.alert(this.form.value.name + 'si entro' +
-        this.form.value.password)*/
-      //AQUI
-      this.usersService.addUser(
-        this.form.value.name, 
+
+    onAddUser(){
+      if(this.form.invalid){
+        return;
+        }
+        
+        this.isLoading = true;
+      
+         //FOR EACH PARA RECORRER EL ARREGLO DE USUARIOS
+          this.verificar();
+          
+         if(this.enter == 0){
+          this.usersService.addUser(
+            this.form.value.name, 
         this.form.value.password,
         'CLIENT',
         this.form.value.email,
         this.form.value.image
-        );
-        window.alert('si salio')
-        //this.usersService.addUser(form.value.title, form.value.content, 'CLIENT');
-        //window.alert('Usuario Agregado Satisfactoriamente ['+form.value.title+']')
-        this.form.reset();
-    }
+            ).subscribe((responseData) => {
+                const verificationToken = responseData.verificationToken;
+  
+        // Enviar el token de verificación al servicio para manejar la verificación
+        this.usersService.verificarCuenta(verificationToken).subscribe(
+        (data) => {
+          console.log('Cuenta verificada correctamente', data);
+        },
+        (error) => {
+          console.error('Error al verificar cuenta', error);
+        }
+      );
+            });
+            this.form.reset();
+         }else{
+          window.alert('EMAIL YA CREADO')
+         }
+         this.isLoading = false;
+     this.form.reset();
+      }
+
+
+      verificar(){
+        this.users.forEach(element => {
+          //Si los datos del Usuario y password coinciden entra a la pagina
+            if(element.email == this.form.value.email && element.isVerified == true){
+              this.enter++;
+            }
+          });
+      
+  }
+
+
+
+
 
     onImagePicked(event: Event){
       const file = (event.target as HTMLInputElement).files[0];

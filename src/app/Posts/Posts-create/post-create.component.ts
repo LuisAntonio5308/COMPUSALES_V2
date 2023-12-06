@@ -54,6 +54,7 @@ export class PostCreateComponent implements OnInit{
                     title: postData.title, 
                     content: postData.content, 
                     price: postData.price,
+                    client: postData.client,//Clients
                     imagePath: postData.imagePath};
                 this.form.setValue({
                     title: this.post.title,
@@ -81,6 +82,7 @@ if(this.mode == 'create'){
       this.form.value.content,
       this.form.value.price, 
       this.form.value.image);
+      this.isLoading = false;
 }else{
   this.postsService.updatePost(
       this.postId,
@@ -90,16 +92,10 @@ if(this.mode == 'create'){
       this.form.value.image
       
   );
+  this.isLoading = false;
 }
 this.form.reset();
-    /*
-    if(form.invalid){
-      return;
-      }
-        this.postsService.addPost(form.value.title, form.value.content, form.value.price);
-        form.resetForm();
-        // Reiniciar la página después de la eliminación
-        //window.location.reload();*/
+  
 
     }
 

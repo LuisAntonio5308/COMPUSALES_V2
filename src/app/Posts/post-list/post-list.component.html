@@ -15,6 +15,10 @@
       </mat-action-row>
     </mat-expansion-panel>
   </mat-accordion>
-  <button mat-button color="primary" (click)="onPrint()">Imprimir</button>
+  
+  <div class="button-container">
+    <button mat-button color="primary" (click)="onPrint()">Imprimir</button>
+  </div>
+  
   <p class="info-text mat-body-1" *ngIf="posts.length <= 0 && !isLoading"> No hay Computadoras Registradas</p>
   

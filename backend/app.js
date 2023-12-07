@@ -17,7 +17,7 @@ const user = express();
 
 //Conectamos a nuestra base de datos
 //mongoose.connect("mongodb+srv://lrs20110814:Garcis95@cluster0.lcbkv1z.mongodb.net/node-angular")
-mongoose.connect("mongodb+srv://antonio:Prueba123@compusales.ztpvvnk.mongodb.net/node-angular")
+mongoose.connect("")
 //comprobacion de que todo esta bien la conexion
 .then(()=>{
     console.log('Base de datos conectada');

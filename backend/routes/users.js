@@ -39,13 +39,13 @@ router.post('/send-email', (req, res) => {
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'ertre763@gmail.com',
-      pass: 'rucu fdvv vdtf akgg',
+      user: 'tuccorreo',
+      pass: 'rucu fdvv vdtfsefef',
     }
   });
 
   const mailOptions = {
-    from: 'ertre763@gmail.com',
+    from: 'tucorreo',
     to: to,
     subject: subject,
     text: body
@@ -103,15 +103,15 @@ router.post("", multer({storage: storage}).single("image"), async (req, res, nex
    const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'ertre763@gmail.com', //TU CORREO ELECTRONICO
-      pass: 'rucu fdvv vdtf akgg', //AQUI VA EL PASSWORD QUE GUARDASTE
+      user: 'tucorreo', //TU CORREO ELECTRONICO
+      pass: 'rucu ', //AQUI VA EL PASSWORD QUE GUARDASTE
     },
   });
 
 
    // Enviar correo de verificación
    const mailOptions = {
-    from: 'ertre763@gmail.com',
+    from: 'tucorreo',
     to: req.body.email,
     subject: 'Verificación de cuenta',
     text: `From COMPUSALES S.A. de C.V. Por favor, haga clic en el siguiente enlace para verificar su cuenta: http://localhost:5000/api/users/verificar/${verificationToken}` +
